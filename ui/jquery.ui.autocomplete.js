@@ -19,6 +19,7 @@ $.widget( "ui.autocomplete", {
 		appendTo: "body",
 		delay: 300,
 		minLength: 1,
+		changeSameValue: false,
 		position: {
 			my: "left top",
 			at: "left bottom",
@@ -300,7 +301,7 @@ $.widget( "ui.autocomplete", {
 	},
 	
 	_change: function( event ) {
-		if ( this.previous !== this.element.val() ) {
+		if ( this.previous !== this.element.val() || this.options.changeSameValue ) {
 			this._trigger( "change", event, { item: this.selectedItem } );
 		}
 	},
